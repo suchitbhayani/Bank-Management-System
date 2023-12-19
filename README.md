@@ -1,5 +1,5 @@
 # Banking-Management-System
 
-• Developed secure login functionality for banking customers
-• Engineered features enabling users to create and monitor their bank accounts
-• Implemented transactions such as deposits, withdrawals, and fund transfers between users
+• Developed secure login functionality for banking customers <br>
+• Engineered features enabling users to create and monitor their bank accounts <br>
+• Implemented transactions such as deposits, withdrawals, and fund transfers between users <br>
