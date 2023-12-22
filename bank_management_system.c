@@ -13,24 +13,15 @@ const size_t accountsSize = sizeof(accounts) / sizeof(accounts[0]);
 int nextFreeAccount = 0;
 
 
-void createAccount() {
-    if (nextFreeAccount < accountsSize) {
-        printf("\nEnter new username: \n");
-        scanf("%s", accounts[nextFreeAccount].username);
-        printf("\nEnter new password: \n");
-        scanf("%s", accounts[nextFreeAccount].password);
-        accounts[nextFreeAccount].balance = 0.00;
-        printf("\nAccount created. Balance is currently $%d\n\n", accounts[nextFreeAccount].balance);
-
-        printf("%s", accounts[nextFreeAccount].username);
-
-        nextFreeAccount++;
-
-    } else {
-        printf("Too many accounts created!");
+bool usernameExists(char* username) {
+    for (int i = 0; i < accountsSize; i++) {
+        if (strcmp(accounts[i].username, username) == 0) {
+            return true;
+        }
     }
-}
 
+    return false;
+}
 
 bool accountExistsUserPass(char* username, char* password) {   
     for (int i = 0; i < accountsSize; i++) {
@@ -39,10 +30,35 @@ bool accountExistsUserPass(char* username, char* password) {
         }
     }
 
+    // implement HashMap for efficiency?
+
     return false;
     
 }
 
+void createAccount() {
+    if (nextFreeAccount < accountsSize) {
+        char enteredUsername[20];
+        char enteredPassword[20];
+        printf("\nEnter new username: \n");
+        scanf("%s", enteredUsername);
+        printf("\nEnter new password: \n");
+        scanf("%s", enteredPassword);
+
+        if (!usernameExists(enteredUsername)) {
+            strcpy(accounts[nextFreeAccount].username, enteredUsername);
+            strcpy(accounts[nextFreeAccount].password, enteredPassword);
+            accounts[nextFreeAccount].balance = 0.00;
+
+            printf("\nAccount created. Balance is currently $%d\n\n", accounts[nextFreeAccount].balance);
+            nextFreeAccount++;
+        } else {
+            printf("\nAccount with username already exists! Please try again.\n");
+        }
+    } else {
+        printf("\nToo many accounts in system created!\n");
+    }
+}
 
 void login() {
     char enteredUser[20];
