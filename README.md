@@ -1,7 +1,7 @@
 # Bank-Management-System
 
-first project in C
+First project in C.
 
-- Developed secure login functionality for banking customers
-- Engineered features enabling users to create and monitor their bank accounts
-- Implemented transactions such as deposits, withdrawals, and fund transfers between users
+Banking functionality with a text-based UI.
+
+Login and account creation for users. Features such as deposits, withdrawals, and fund transfers between users.
